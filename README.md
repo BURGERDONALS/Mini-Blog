@@ -10,4 +10,4 @@ Autor:
 
 Güven Berk Çakan - 68852
 
-Enes Talha Kayhan - N
+Enes Talha Kayhan - 67829
