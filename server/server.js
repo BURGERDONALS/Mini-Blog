@@ -164,28 +164,28 @@ app.delete('/api/articles/:articleId/comments/:commentId', (req, res) => {
     const artykul = dane.articles.find(a => a.id === articleId);
     if (!artykul) return res.status(404).json({ error: 'Nie znaleziono artykułu' });
 
-    let silindiMi = false;
+    let czyUsunieto = false;
 
-    const baslangicSayisi = artykul.comments.length;
+    const baslangicLiczbaKomentarzy = artykul.comments.length;
     artykul.comments = artykul.comments.filter(c => c.id !== commentId);
     
-    if (artykul.comments.length < baslangicSayisi) {
-        silindiMi = true;
+    if (artykul.comments.length < baslangicLiczbaKomentarzy) {
+        czyUsunieto = true;
     }
 
-    if (!silindiMi) {
+    if (!czyUsunieto) {
         artykul.comments.forEach(c => {
             if (c.replies && c.replies.length > 0) {
-                const cevapSayisi = c.replies.length;
+                const liczbaOdpowiedzi = c.replies.length;
                 c.replies = c.replies.filter(r => r.id !== commentId);
-                if (c.replies.length < cevapSayisi) {
-                    silindiMi = true;
+                if (c.replies.length < liczbaOdpowiedzi) {
+                    czyUsunieto = true;
                 }
             }
         });
     }
 
-    if (silindiMi) {
+    if (czyUsunieto) {
         zapiszDane(dane);
         res.json({ success: true });
     } else {

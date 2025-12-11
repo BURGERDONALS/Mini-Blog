@@ -10,7 +10,7 @@ const pool = new Pool({
 
 async function initDatabase() {
   try {
-    console.log('Veritabanı başlatılıyor...');
+    console.log('Inicjowanie bazy danych...');
     
     await pool.query(`
       CREATE TABLE IF NOT EXISTS articles (
@@ -46,13 +46,13 @@ async function initDatabase() {
         INSERT INTO articles (title, author, content, created_at) VALUES
         ('Witamy! To jest pierwszy artykuł', 'Administrator', 'System działa poprawnie. Możesz edytować i usuwać komentarze oraz artykuły!', NOW())
       `);
-      console.log('Başlangıç verisi eklendi.');
+      console.log('Dodano dane początkowe.');
     }
 
-    console.log('Veritabanı başarıyla hazırlandı.');
+    console.log('Baza danych została pomyślnie przygotowana.');
     pool.end();
   } catch (error) {
-    console.error('Veritabanı başlatma hatası:', error);
+    console.error('Błąd inicjowania bazy danych:', error);
     pool.end();
   }
 }

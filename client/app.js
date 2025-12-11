@@ -155,7 +155,7 @@ async function loadArticles() {
         articles = await blogAPI.getArticles();
         renderArticles();
     } catch (error) {
-        console.error('Error loading articles:', error);
+        console.error('Błąd ładowania artykułów:', error);
     }
 }
 
@@ -203,7 +203,7 @@ async function openArticle(articleId) {
         elements.commentContentInput.value = '';
         showView('article');
     } catch (error) {
-        console.error('Error opening article:', error);
+        console.error('Błąd otwierania artykułu:', error);
     }
 }
 
